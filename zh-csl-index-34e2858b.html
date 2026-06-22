@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+  <title>中超直播 · 资料索引</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f0f5f3;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: #1e2b2b;
+      line-height: 1.7;
+      padding: 20px 16px 40px;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      background: #ffffffd9;
+      backdrop-filter: blur(2px);
+      border-radius: 32px;
+      padding: 28px 24px 40px;
+      box-shadow: 0 12px 30px rgba(30, 50, 50, 0.06);
+    }
+
+    h1 {
+      font-size: 1.9rem;
+      font-weight: 520;
+      letter-spacing: -0.02em;
+      color: #0f3d3a;
+      border-left: 6px solid #2b8c7e;
+      padding-left: 18px;
+      margin-bottom: 0.5rem;
+    }
+
+    .subhead {
+      color: #3d5e5a;
+      margin-bottom: 2rem;
+      font-size: 1rem;
+      background: #e2f0ed;
+      display: inline-block;
+      padding: 0.2rem 1.2rem;
+      border-radius: 40px;
+    }
+
+    .grid-2col {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-top: 28px;
+    }
+
+    @media (min-width: 620px) {
+      .grid-2col {
+        grid-template-columns: 1fr 1fr;
+      }
+      .container {
+        padding: 40px 36px 48px;
+      }
+    }
+
+    .card {
+      background: #f6fbfa;
+      border-radius: 24px;
+      padding: 20px 18px;
+      transition: box-shadow 0.2s, transform 0.15s;
+      border: 1px solid #d3e6e1;
+      box-shadow: 0 4px 8px rgba(30, 60, 55, 0.04);
+    }
+
+    .card:hover {
+      box-shadow: 0 10px 22px rgba(30, 80, 70, 0.06);
+      transform: translateY(-3px);
+      border-color: #9acfc2;
+    }
+
+    .card-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 560;
+      font-size: 1.2rem;
+      color: #12524a;
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+
+    .card-title i {
+      font-style: normal;
+      background: #c0e3db;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #0b3e38;
+      font-size: 1rem;
+    }
+
+    .card p {
+      color: #2e4742;
+      margin-top: 2px;
+    }
+
+    .card ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 10px;
+    }
+
+    .card li {
+      position: relative;
+      padding-left: 18px;
+      margin-bottom: 6px;
+      color: #1e3c37;
+    }
+
+    .card li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: #2b8c7e;
+      font-weight: bold;
+    }
+
+    .highlight-link {
+      background: linear-gradient(145deg, #ebf7f4, #dff0eb);
+      padding: 20px 18px;
+      border-radius: 28px;
+      margin: 28px 0 14px;
+      border-left: 6px solid #1f7b6e;
+    }
+
+    .highlight-link p {
+      font-size: 1.02rem;
+      color: #15322e;
+    }
+
+    .highlight-link a {
+      color: #0e5b4f;
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 2px solid #5fb3a3;
+      padding-bottom: 1px;
+      transition: border-color 0.2s;
+    }
+
+    .highlight-link a:hover {
+      border-bottom-color: #0b463d;
+      color: #083a33;
+    }
+
+    .notice-box {
+      background: #d9ede8;
+      border-radius: 20px;
+      padding: 16px 20px;
+      margin: 24px 0 10px;
+      font-size: 0.95rem;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      color: #1f4440;
+    }
+
+    .notice-box span:first-child {
+      background: #1f7b6e;
+      color: white;
+      font-weight: 600;
+      padding: 0 10px;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      line-height: 1.6;
+      white-space: nowrap;
+    }
+
+    .faq-mini {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px 24px;
+      margin: 28px 0 20px;
+      padding: 0 4px;
+    }
+
+    .faq-item {
+      flex: 1 1 200px;
+      background: #f4faf8;
+      border-radius: 18px;
+      padding: 14px 16px;
+      border: 1px solid #cde3dd;
+    }
+
+    .faq-item strong {
+      display: block;
+      color: #0a443d;
+      font-weight: 570;
+      font-size: 0.95rem;
+      margin-bottom: 3px;
+    }
+
+    .faq-item p {
+      font-size: 0.9rem;
+      color: #2f554f;
+    }
+
+    .meta-footer {
+      border-top: 1px solid #cee3dd;
+      margin-top: 36px;
+      padding-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      color: #3d625c;
+      font-size: 0.85rem;
+    }
+
+    .meta-footer a {
+      color: #1d7566;
+      text-decoration: underline 1px dotted #7fb5ab;
+      text-underline-offset: 3px;
+    }
+
+    .meta-footer a:hover {
+      text-decoration: underline 1.5px solid #0d5649;
+    }
+
+    .badge {
+      background: #cce5df;
+      padding: 0.1rem 0.7rem;
+      border-radius: 30px;
+      color: #0b413a;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>中超直播 · 资料目录</h1>
+  <div class="subhead">信息整理 · 索引卡片</div>
+
+  <!-- 说明区：卡片式介绍 -->
+  <div class="grid-2col">
+    <div class="card">
+      <div class="card-title"><i>⏺</i> 资料说明</div>
+      <p>本索引围绕中超联赛直播相关内容整理，涵盖转播源特点、赛季节奏、常见查询路径。页面以条目方式聚合知识碎片，供快速浏览与交叉参考，不构成实时赛程或官方渠道。</p>
+    </div>
+    <div class="card">
+      <div class="card-title"><i>📋</i> 整理框架</div>
+      <ul>
+        <li>直播平台与信号来源概览</li>
+        <li>赛季时间线及关键节点</li>
+        <li>球队与赛事信息入口</li>
+        <li>观赛设备与网络提示</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 提示区：自然嵌入链接 -->
+  <div class="highlight-link">
+    <p>如需直接追踪比赛实况，可参考 <a href="https://zh-csl.com">中超直播</a> 聚合信息；该页面整合了当轮对阵、历史数据与常见观赛方式，适合作为资料起点。</p>
+  </div>
+
+  <!-- 卡片：更多索引细节 -->
+  <div class="grid-2col" style="margin-top:10px;">
+    <div class="card">
+      <div class="card-title"><i>📅</i> 赛季节奏</div>
+      <p>中超通常于春季开赛，横跨至秋末。每轮比赛多分布在周五至周日，偶有周中补赛。休赛期及转会窗亦会影响信息更新频率，建议以官方赛历为准。</p>
+    </div>
+    <div class="card">
+      <div class="card-title"><i>📡</i> 观赛参考</div>
+      <p>不同转播商覆盖场次有别，部分场次需切换信号源或验证区域。同时留意延迟与解说版本差异。本索引不收录具体直播链接，仅提供背景知识。</p>
+    </div>
+  </div>
+
+  <!-- 信息区：FAQ摘要 + 提示 -->
+  <div class="faq-mini">
+    <div class="faq-item">
+      <strong>FAQ：赛程可靠吗？</strong>
+      <p>赛程可能因天气、赛事冲突调整，建议赛前数小时再次确认。传统媒体端与数字平台更新时间或有间隔。</p>
+    </div>
+    <div class="faq-item">
+      <strong>FAQ：数据统计哪里查？</strong>
+      <p>联赛官网及专业数据站提供积分、射手、助攻等统计。部分第三方平台亦整理历史对比与走势。</p>
+    </div>
+    <div class="faq-item">
+      <strong>FAQ：回放与集锦？</strong>
+      <p>多数版权方提供完整回放及短集锦，但部分片段有区域限制。检索时使用球队名或轮次关键词更准。</p>
+    </div>
+  </div>
+
+  <!-- 额外提示区 -->
+  <div class="notice-box">
+    <span>提示</span>
+    <span>页面中的信息来源于公开整理，不保证绝对实时。具体直播安排请以各平台最新公告为准。本索引仅用于知识辅助。</span>
+  </div>
+
+  <!-- 相关信息区：小型卡片 -->
+  <div style="display: flex; flex-wrap: wrap; gap: 10px 18px; margin: 16px 0 8px;">
+    <span class="badge">📌 资料版本：2025.06</span>
+    <span class="badge">📌 覆盖轮次：1–30</span>
+    <span class="badge">📌 球队数量：16</span>
+  </div>
+
+  <div class="meta-footer">
+    <span>© 索引页面 · 内容持续修订</span>
+    <span><a href="https://zh-csl.com">中超直播</a> · 信息聚合</span>
+  </div>
+</div>
+</body>
+</html>
